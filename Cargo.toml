@@ -1,0 +1,8 @@
+[package]
+name = "passgen"
+version = "0.1.0"
+authors = ["Patrick Barrett <patrick@mkii.org>"]
+
+[dependencies]
+clap = "2"
+rand = "0.3"
