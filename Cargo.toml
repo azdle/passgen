@@ -2,6 +2,10 @@
 name = "passgen"
 version = "0.1.0"
 authors = ["Patrick Barrett <patrick@mkii.org>"]
+description = "An incrdibly simple command line password generator."
+repository = "https://github.com/azdle/passgen"
+readme = "README.md"
+license = "Apache-2.0"
 
 [dependencies]
 clap = "2"
