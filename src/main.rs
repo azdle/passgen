@@ -3,7 +3,7 @@ extern crate clap;
 
 fn main() {
     use clap::{Arg, App};
-    use rand::Rng;
+    use rand::{Rng, OsRng};
     use std::ascii::AsciiExt;
 
     let matches = App::new("passgen")
@@ -24,7 +24,9 @@ fn main() {
     let length: u16 = length_str.parse().expect("Length must be number");
     let charset = matches.value_of("CHARSET").unwrap_or("");
 
-    let result = rand::thread_rng()
+    let mut r = OsRng::new().expect("failed to get os rng");
+
+    let result = r
         .gen_iter::<char>()
         .filter(|x| (x.is_ascii() && x.is_alphanumeric()) || (charset.chars().filter(|y| y == x).count() > 0))
         .take(length as usize)
