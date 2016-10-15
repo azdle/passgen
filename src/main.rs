@@ -3,7 +3,6 @@ extern crate clap;
 
 fn main() {
     use clap::{Arg, App};
-    use rand::{Rng, OsRng};
 
     let uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".chars();
     let lowercase = "abcdefghijklmnopqrstuvwxyz".chars();
@@ -30,14 +29,21 @@ fn main() {
     let length: usize = length_str.parse().expect("Length must be number");
     let symbols = matches.value_of("SYMBOLS").unwrap_or("");
 
+    println!("{}", generate(alphanumeric.chain(symbols.chars()), length));
+}
+
+
+fn generate<I>(charset: I, length: usize) -> String where I: Iterator<Item=char> {
+    use rand::{Rng, OsRng};
+
     let mut r = OsRng::new().expect("failed to get os rng");
 
-    let charset: Vec<char> = alphanumeric.chain(symbols.chars()).collect();
+    let charset_vec: Vec<char> = charset.collect();
     let mut result = String::with_capacity(length);
 
     for _ in 0..length {
-        result.push(*r.choose(&charset).unwrap());
+        result.push(*r.choose(&charset_vec).unwrap());
     }
 
-    println!("{}", result);
+    result
 }
