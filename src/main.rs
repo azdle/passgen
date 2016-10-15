@@ -29,5 +29,8 @@ fn main() {
     let length: usize = length_str.parse().expect("Length must be number");
     let symbols = matches.value_of("SYMBOLS").unwrap_or("");
 
-    println!("{}", passgen::generate(alphanumeric.chain(symbols.chars()), length));
+    println!("{}", passgen::generate(
+      alphanumeric.chain(symbols.chars()),
+      length
+    ).expect("failed to generate password"));
 }
