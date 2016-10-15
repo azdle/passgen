@@ -13,7 +13,7 @@ fn main() {
 
     let matches = App::new("passgen")
                           .version("0.1.0")
-                          .author("Patrick Barrett <patrick@mkii.org>")
+                          .author("Patrick Barrett <patrick@psbarrett.com>")
                           .about("Generates Passwords")
                           .arg(Arg::with_name("LENGTH")
                                .help("Sets the desired password length")
