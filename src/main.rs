@@ -1,6 +1,8 @@
 extern crate clap;
 extern crate passgen;
 
+const VERSION: Option<&'static str> = option_env!("CARGO_PKG_VERSION");
+
 fn main() {
     use clap::{Arg, App};
 
@@ -12,7 +14,7 @@ fn main() {
     let alphanumeric = alpha.chain(numeric);
 
     let matches = App::new("passgen")
-                          .version("0.1.0")
+                          .version(VERSION.unwrap_or("unknown"))
                           .author("Patrick Barrett <patrick@psbarrett.com>")
                           .about("Generates Passwords")
                           .arg(Arg::with_name("LENGTH")
