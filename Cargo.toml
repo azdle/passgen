@@ -1,6 +1,6 @@
 [package]
 name = "passgen"
-version = "0.3.0"
+version = "0.3.1"
 authors = ["Patrick Barrett <patrick@mkii.org>"]
 description = "An incrdibly simple command line password generator."
 repository = "https://github.com/azdle/passgen"
